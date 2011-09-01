@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDo.App", "ToDo.App\ToDo.App.csproj", "{5452E3F7-9774-4270-BAAE-0C6D3F97D078}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDo.Migrations", "ToDo.Migrations\ToDo.Migrations.csproj", "{99E06904-8638-414B-BD5F-AC279BFB825F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5452E3F7-9774-4270-BAAE-0C6D3F97D078}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5452E3F7-9774-4270-BAAE-0C6D3F97D078}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5452E3F7-9774-4270-BAAE-0C6D3F97D078}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5452E3F7-9774-4270-BAAE-0C6D3F97D078}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99E06904-8638-414B-BD5F-AC279BFB825F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99E06904-8638-414B-BD5F-AC279BFB825F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99E06904-8638-414B-BD5F-AC279BFB825F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99E06904-8638-414B-BD5F-AC279BFB825F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
