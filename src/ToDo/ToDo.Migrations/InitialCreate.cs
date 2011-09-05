@@ -27,7 +27,8 @@ namespace ToDo.Migrations
 
         public override void Down()
         {
-            throw new NotImplementedException();
+            Delete.Table("ToDo");
+            Delete.Table("User");
         }
     }
 }
