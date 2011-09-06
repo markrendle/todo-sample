@@ -29,11 +29,11 @@
 
             Post["/login"] = x =>
             {
-                Guid? userGuid = this.userService.Authenticate(this.Request.Form.Username, this.Request.Form.Password);
+                Guid? userGuid = this.userService.Authenticate(this.Request.Form.Email, this.Request.Form.Password);
 
                 if (!userGuid.HasValue)
                 {
-                    return Context.GetRedirect("~/login?error=true&username=" + (string)this.Request.Form.Username);
+                    return Context.GetRedirect("~/login?error=true&email=" + (string)this.Request.Form.Email);
                 }
 
                 DateTime? expiry = null;
@@ -46,6 +46,34 @@
             };
 
             Get["/logout"] = x => this.LogoutAndRedirect("~/");
+
+            Get["/register"] = x =>
+                                   {
+                                        dynamic model = new ExpandoObject();
+                                        model.Errored = this.Request.Query.error.HasValue;
+                                       return View["register", model];
+                                   };
+
+            Post["/register"] = x =>
+                                    {
+                                        try
+                                        {
+                                            Guid userGuid = userService.Register(Request.Form.Email,
+                                                                                Request.Form.Password,
+                                                                                Request.Form.ConfirmPassword);
+                                            DateTime? expiry = null;
+                                            if (this.Request.Form.RememberMe.HasValue)
+                                            {
+                                                expiry = DateTime.Now.AddDays(7);
+                                            }
+
+                                            return this.LoginAndRedirect(userGuid, expiry);
+                                        }
+                                        catch (ArgumentException)
+                                        {
+                                            return Context.GetRedirect("~/register?error=true");
+                                        }
+                                    };
         }
     }
 }

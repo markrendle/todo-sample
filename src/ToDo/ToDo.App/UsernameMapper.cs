@@ -34,6 +34,25 @@
             return storedBytes.SequenceEqual(enteredBytes) ? user.Id : null;
         }
 
+        public Guid Register(string email, string password, string confirmPassword)
+        {
+            if (email == null) throw new ArgumentNullException("email");
+            if (password == null) throw new ArgumentNullException("password");
+            if (confirmPassword == null) throw new ArgumentNullException("confirmPassword");
+            if (!password.Equals(confirmPassword)) throw new ArgumentException("Password mismatch.");
+
+            byte[] userSalt = GenerateUserSalt();
+            byte[] encryptedPassword = GenerateSaltedHash(Encoding.UTF8.GetBytes(password), userSalt).ToArray();
+
+            _db.Users.Insert(Email: email, EncryptedPassword: encryptedPassword, Salt: userSalt);
+            return _db.Users.FindByEmail(email).Id;
+        }
+
+        private static byte[] GenerateUserSalt()
+        {
+            return Guid.NewGuid().ToByteArray().Concat(Guid.NewGuid().ToByteArray()).ToArray();
+        }
+
         private static IEnumerable<byte> GenerateSaltedHash(byte[] plainText, byte[] salt)
         {
             var algorithm = new SHA256Managed();
