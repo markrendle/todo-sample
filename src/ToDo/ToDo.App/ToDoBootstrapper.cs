@@ -7,6 +7,10 @@
     {
         protected override void InitialiseInternal(TinyIoC.TinyIoCContainer container)
         {
+#if DEBUG
+            StaticConfiguration.DisableCaches = true;
+#endif 
+
             base.InitialiseInternal(container);
 
             FormsAuthentication.Enable(

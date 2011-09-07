@@ -11,9 +11,25 @@
     New: <input type="text" name="Text" id="Text"/>
     <input type="submit" value="Add"/>
 </form>
-@foreach (var todo in Model.ToDos)
-{
-    <p>@todo.Text [Added at @todo.Added.ToString("hh:mm") on @todo.Added.ToString("dd MMM yyyy")]</p>
-}
+
+<ul id="todoList">
+    @foreach (var todo in Model.ToDos)
+     {
+        <li>
+            @todo.Text [Added at @todo.Added.ToString("hh:mm") on @todo.Added.ToString("dd MMM yyyy")]
+
+            <a href='@Url.Content("~/todo/" + todo.Id + "/complete")'>
+                @if (todo.Done != null)
+                {
+                    <span>Mark Uncomplete</span>
+                }
+                else
+                {
+                    <span>Mark Complete</span>
+                }
+            </a>
+        </li> 
+     }
+</ul>
 
 <div id="logout"><a href="@Url.Content("~/logout")">Logout</a></div>

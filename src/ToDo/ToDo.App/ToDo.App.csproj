@@ -112,7 +112,9 @@
   <ItemGroup>
     <Content Include="Views\ToDos.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Extensions\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Layouts\main.cshtml" />
   </ItemGroup>
