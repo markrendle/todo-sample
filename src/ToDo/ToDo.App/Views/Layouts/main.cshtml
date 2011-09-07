@@ -4,12 +4,14 @@
     <title>ToDos @RenderSection("Title", false);</title>
     <link rel="stylesheet" href='@Url.Content("~/content/styles/Main.css")' type="text/css" media="screen"/>
 </head>
-<header>
-    <h1>ToDo App @RenderSection("Title", false)</h1>
-</header>
-<body>
-    @RenderBody()
-</body>
-<footer>
-</footer>
+<div id="container">
+    <header>
+        <h1>ToDo App @RenderSection("Title", false)</h1>
+    </header>
+    <body>
+        @RenderBody()
+    </body>
+    <footer>
+    </footer>
+</div>
 </html>
