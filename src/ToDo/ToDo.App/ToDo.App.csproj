@@ -89,6 +89,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AuthenticationModule.cs" />
+    <Compile Include="EncryptionHelper.cs" />
     <Compile Include="IUserService.cs" />
     <Compile Include="MainModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

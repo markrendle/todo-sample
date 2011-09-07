@@ -8,15 +8,15 @@
     using Nancy.Security;
     using Simple.Data;
 
-    public class ToDoModule : NancyModule
-    {
-        private readonly dynamic _db = Database.OpenNamedConnection("todo");
-        public ToDoModule()
-            : base("/todo")
-        {
-            this.RequiresAuthentication();
+public class ToDoModule : NancyModule
+{
+    private readonly dynamic _db = Database.OpenNamedConnection("todo");
 
-            Get["/"] = _ =>
+    public ToDoModule() : base("/todo")
+    {
+        this.RequiresAuthentication();
+
+        Get["/"] = _ =>
             {
                 dynamic model = new ExpandoObject();
                 model.ToDos = _db.Users.FindAllByEmail(Context.Items["username"]).ToDos.OrderByAdded();
@@ -55,7 +55,7 @@
                     return HttpStatusCode.Forbidden;
                 }
 
-                _db.Users.UpdateById(Id: todo.Id, Done: (todo.Done == null) ? (DateTime?)DateTime.Now : null);
+                _db.ToDos.UpdateById(Id: todo.Id, Done: (todo.Done == null) ? (DateTime?)DateTime.Now : null);
 
                 return Request.IsAjaxRequest() ? (Response)new JsonResponse(todo) : Context.GetRedirect("~/todo/");
             };

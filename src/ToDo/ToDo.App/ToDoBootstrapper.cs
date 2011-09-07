@@ -3,23 +3,23 @@
     using Nancy;
     using Nancy.Authentication.Forms;
 
-    public class ToDoBootstrapper : DefaultNancyBootstrapper
+public class ToDoBootstrapper : DefaultNancyBootstrapper
+{
+    protected override void InitialiseInternal(TinyIoC.TinyIoCContainer container)
     {
-        protected override void InitialiseInternal(TinyIoC.TinyIoCContainer container)
-        {
 #if DEBUG
-            StaticConfiguration.DisableCaches = true;
+        StaticConfiguration.DisableCaches = true;
 #endif 
 
-            base.InitialiseInternal(container);
+        base.InitialiseInternal(container);
 
-            FormsAuthentication.Enable(
-                this, 
-                new FormsAuthenticationConfiguration
-                    {
-                        RedirectUrl = "~/login",
-                        UsernameMapper = container.Resolve<IUsernameMapper>()
-                    });
-        }
+        FormsAuthentication.Enable(
+            this, 
+            new FormsAuthenticationConfiguration
+                {
+                    RedirectUrl = "~/login",
+                    UsernameMapper = container.Resolve<IUsernameMapper>()
+                });
     }
+}
 }
