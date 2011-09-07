@@ -27,6 +27,8 @@
                 return View["login", model];
             };
 
+            Get["/logout"] = x => this.LogoutAndRedirect("~/");
+
             Post["/login"] = x =>
             {
                 Guid? userGuid = this.userService.Authenticate(this.Request.Form.Email, this.Request.Form.Password);

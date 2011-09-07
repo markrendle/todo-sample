@@ -1,21 +1,22 @@
-﻿<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Register</title>
-</head>
-<body>
-    <form method="POST">
-        Email <input type="email" name="Email" />
-        <br />
-        Password <input name="Password" type="password" />
-        <br />
-        Confirm Password <input name="ConfirmPassword" type="password" />
-        <br />
-        <input type="submit" value="Register" />
-    </form>
-    @if (Model.Errored) {
-        <div id="errorBox" class="floatingError">Invalid Email or Password</div>
-    }
+﻿@{
+    Layout = "Layouts/main.cshtml";
+}
 
-</body>
-</html>
+@section Title
+{
+ - Register
+}
+
+<form method="POST">
+    Email <input type="email" name="Email" />
+    <br />
+    Password <input name="Password" type="password" />
+    <br />
+    Confirm Password <input name="ConfirmPassword" type="password" />
+    <br />
+    <input type="submit" value="Register" />
+</form>
+
+@if (Model.Errored) {
+    <div id="errorBox" class="floatingError">Invalid Email or Password</div>
+}

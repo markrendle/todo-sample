@@ -1,16 +1,19 @@
-﻿<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>ToDos</title>
-</head>
-<body>
-    <form method="POST">
-        New: <input type="text" name="Text" id="Text"/>
-        <input type="submit" value="Add"/>
-    </form>
-    @foreach (var todo in Model.ToDos)
-    {
-        <p>@todo.Text [Added at @todo.Added.ToString("hh:mm") on @todo.Added.ToString("dd MMM yyyy")]</p>
-    }
-</body>
-</html>
+﻿@{
+    Layout = "Layouts/main.cshtml";
+}
+
+@section Title
+{
+ - My Todo List
+}
+
+<form method="POST">
+    New: <input type="text" name="Text" id="Text"/>
+    <input type="submit" value="Add"/>
+</form>
+@foreach (var todo in Model.ToDos)
+{
+    <p>@todo.Text [Added at @todo.Added.ToString("hh:mm") on @todo.Added.ToString("dd MMM yyyy")]</p>
+}
+
+<div id="logout"><a href="@Url.Content("~/logout")">Logout</a></div>
